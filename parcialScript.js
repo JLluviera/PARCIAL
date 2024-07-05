@@ -42,12 +42,12 @@ function arrayLista(arrayRobots) {
 class Robot {
     constructor ({nombre, velMax, autonomia}) {
         this.nombre = nombre;
-        this.velMax = velMax;
-        this.autonomia = autonomia;
+        this.velMax = parseInt(velMax);
+        this.autonomia = parseInt(autonomia);
     }
 
     mostrarDatos() {
-        alert(`${this.nombre}, tiene una velocidad maxima de ${this.velMax} y una autonomia de ${this.autonomia}`);
+        alert(`${this.nombre}, tiene una velocidad maxima de ${this.velMax} y una autonomia de ${this.autonomia} horas`);
     }
 
     modificarAutonomia(nuevaAut) {
@@ -60,19 +60,20 @@ class Robot {
         return arregloNuevo
     }
 
-    static calcularAutonomiaEnKm() {
-        return (this.velMax * autonomia)
+    static calcularAutonomiaEnKm(robot) {
+        let kilometros = robot.velMax * robot.autonomia;
+        return kilometros
     }
 
-    static crearDiv() {
+    static crearDiv(robot1) {
         let div = document.createElement("div");
 
         let h1 = document.createElement("h1");
-        h1.innerHTML = this.nombre;
+        h1.innerHTML = robot1.nombre;
         div.appendChild(h1);
 
         let parraf = document.createElement("p");
-        parraf.innerHTML = `cuenta con una velocidad maxima de ${this.velMax}y una autonomia de ${this.autonomia}`
+        parraf.innerHTML = `cuenta con una velocidad maxima de ${robot1.velMax}y una autonomia de ${robot1.autonomia}`
         div.appendChild(parraf);
     
         return div
